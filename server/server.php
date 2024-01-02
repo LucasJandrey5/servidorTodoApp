@@ -16,7 +16,7 @@ $response = [
   "success" => true,
   "message" => "Servidor Online."
 ];
-    
+
 
 
 // Return the JSON response
@@ -25,5 +25,3 @@ echo json_encode($response, JSON_PRETTY_PRINT);
 
 // Close the database connection
 $conn = null;
-
-?>

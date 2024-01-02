@@ -38,13 +38,20 @@ if ($data = json_decode($inputFile, true)) {
 
     $res = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
+    $password = $data["password"];
+
+    // $options = [
+    //   'cost' => 13,
+    // ];
+    $cryptedPassword = password_hash($password, PASSWORD_BCRYPT);
+
     if ($res == []) {
       $stmt = $conn->prepare("INSERT INTO User (username, email, password, profileImage) 
         VALUES (:username, :email, :password, :profileImage)");
 
       $stmt->bindParam(':username', $data['username']);
       $stmt->bindParam(':email', $data['email']);
-      $stmt->bindParam(':password', $data['password']);
+      $stmt->bindParam(':password', $cryptedPassword);
       $stmt->bindParam(':profileImage', $data['profileImage']);
 
 
