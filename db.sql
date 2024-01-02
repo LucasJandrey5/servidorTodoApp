@@ -33,29 +33,30 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TodoApp`.`Category`
+-- Table `Category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TodoApp`.`Category` (
-  `idCategorys` INT NOT NULL AUTO_INCREMENT,
-  `idUser` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Category` (
+  `idCategory` INT NOT NULL AUTO_INCREMENT,
+  `idUser` INT,
+  `title` VARCHAR(45) NOT NULL,
   `colorHEX` VARCHAR(45) NOT NULL,
   `secondaryColorHEX` VARCHAR(45) NOT NULL,
   `icon` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idCategorys`, `idUser`),
+  PRIMARY KEY (`idCategory`, `idUser`),
   INDEX `fk_Category_User1_idx` (`idUser` ASC) VISIBLE,
-  UNIQUE INDEX `idCategorys_UNIQUE` (`idCategorys` ASC) VISIBLE,
+  UNIQUE INDEX `idCategory_UNIQUE` (`idCategory` ASC) VISIBLE,
   CONSTRAINT `fk_Category_User1`
     FOREIGN KEY (`idUser`)
-    REFERENCES `TodoApp`.`User` (`idUser`)
+    REFERENCES `User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TodoApp`.`Task`
+-- Table `Task`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TodoApp`.`Task` (
+CREATE TABLE IF NOT EXISTS `Task` (
   `idTask` INT NOT NULL AUTO_INCREMENT,
   `idUser` INT NOT NULL,
   `idCategory` INT NOT NULL,
@@ -69,12 +70,12 @@ CREATE TABLE IF NOT EXISTS `TodoApp`.`Task` (
   INDEX `fk_Task_Category1_idx` (`idCategory` ASC) VISIBLE,
   CONSTRAINT `fk_Task_User`
     FOREIGN KEY (`idUser`)
-    REFERENCES `TodoApp`.`User` (`idUser`)
+    REFERENCES `User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Task_Category1`
     FOREIGN KEY (`idCategory`)
-    REFERENCES `TodoApp`.`Category` (`idCategorys`)
+    REFERENCES `Category` (`idCategory`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
