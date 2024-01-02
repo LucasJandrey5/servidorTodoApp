@@ -47,6 +47,7 @@ if ($data = json_decode($inputFile, true)) {
 
       if ($auth) {
         $user = [
+          "idUser" => $res[0]["idUser"],
           "username" => $res[0]["username"],
           "email" => $res[0]["email"],
           "profileImage" => $res[0]["profileImage"],
