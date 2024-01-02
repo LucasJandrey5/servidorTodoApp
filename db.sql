@@ -84,3 +84,18 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Insert Categories
+-- -----------------------------------------------------
+INSERT INTO `Category` (`idCategory`, `idUser`, `title`, `colorHEX`, `secondaryColorHEX`, `icon`) VALUES
+(1, 1, 'Grocery', '#CCFF80', '#21A300', 'grocery_icon'),
+(2, 1, 'Work', '#FF9680', '#A31D00', 'work_icon'),
+(3, 1, 'Sport', '#80FFFF', '#00A32F', 'sport_icon'),
+(4, 1, 'Design', '#80FFD9', '#00A372', 'design_icon'),
+(5, 1, 'University', '#809CFF', '#0055A3', 'university_icon'),
+(6, 1, 'Social', '#FF80EB', '#A30089', 'social_icon'),
+(7, 1, 'Music', '#FC80FF', '#A000A3', 'music_icon'),
+(8, 1, 'Health', '#80FFA3', '#00A3A3', 'health_icon'),
+(9, 1, 'Movie', '#80D1FF', '#0069A3', 'movie_icon'),
+(10, 1, 'Home', '#FFCC80', '#A36200', 'home_icon');
